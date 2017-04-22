@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour {
 
-    public Transform planet;
     [Range(0,10)]
     public float targetRadius = 4;
     public float rotationSpeed = 70;
     public float radiusSpeed = 1;
 
     private float radius;
-    
+    private Transform planet;
+
 
 
 
     void Start () {
+        planet = GameObject.FindGameObjectWithTag("Planet").transform;
         radius = (transform.position - planet.position).magnitude;
 	}
 	
