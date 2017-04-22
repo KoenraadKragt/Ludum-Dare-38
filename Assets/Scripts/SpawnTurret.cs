@@ -8,6 +8,7 @@ public class SpawnTurret : MonoBehaviour {
     public GameObject turretPrefab;
     private GameObject crosshair;
     private float planetRadius;
+    public int cost = 1;
 
     void Start () {
 
@@ -26,15 +27,15 @@ public class SpawnTurret : MonoBehaviour {
             {
                 placeTurret();
                 isBuying = false;
+                cost += 1;
             }
         }
 
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (ResourceManager.instance.removeScrap(1))
+            if (ResourceManager.instance.removeScrap(cost))
             {
-
                 isBuying = true;
             }
         }
