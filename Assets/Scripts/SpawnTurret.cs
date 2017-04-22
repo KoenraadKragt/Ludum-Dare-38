@@ -32,7 +32,11 @@ public class SpawnTurret : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isBuying = true;
+            if (ResourceManager.instance.removeScrap(1))
+            {
+
+                isBuying = true;
+            }
         }
 	}
 

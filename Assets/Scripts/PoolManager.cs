@@ -81,7 +81,8 @@ public class PoolManager : MonoBehaviour {
 
             if (hasPoolObjectComponent)
             {
-                poolObjectScript.OnObjectReuse();
+                //poolObjectScript.OnObjectReuse();
+                poolObjectScript.gameObject.SendMessage("OnObjectReuse",SendMessageOptions.DontRequireReceiver);
             }
         }
 
