@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Crosshair : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
         Vector3 v3 = Input.mousePosition;

@@ -11,10 +11,17 @@ public class ShootTurret : MonoBehaviour {
     private GameObject newProjectile;
     private float myTime = 0.0F;
 
+    private AimTurret aim;
+
+    void Start()
+    {
+        aim = gameObject.GetComponent<AimTurret>();
+    }
+
     void Update () {
         myTime = myTime + Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && myTime > nextFire)
+        if ((Input.GetButton("Fire1") && myTime > nextFire) && aim.canShoot)
         {
             nextFire = myTime + fireDelta;
             newProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject;

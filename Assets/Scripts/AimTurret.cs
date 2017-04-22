@@ -5,6 +5,9 @@ using UnityEngine;
 public class AimTurret : MonoBehaviour {
 
     public float maxAngle = 90;
+    [HideInInspector]
+    public bool canShoot = true;
+
     private GameObject crosshair;
     private Transform turretAnchor;
 
@@ -22,6 +25,10 @@ public class AimTurret : MonoBehaviour {
         if (Vector3.Angle(crosshair.transform.position - transform.position, turretAnchor.forward) < maxAngle)
         {
             transform.rotation = targetRot;
+            canShoot = true;
+        } else
+        {
+            canShoot = false;
         }
             
 	}
