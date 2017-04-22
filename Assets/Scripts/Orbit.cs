@@ -22,14 +22,15 @@ public class Orbit : MonoBehaviour {
 	
 
 	void Update () {
-        //radius = Mathf.Lerp(radius, targetRadius, Time.deltaTime);
-
-        Vector3 desiredPosition;
-
         transform.RotateAround(planet.position, Vector3.forward, rotationSpeed *  Time.deltaTime);
-        desiredPosition = (transform.position - planet.position).normalized * targetRadius + planet.position;
 
-        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
+        if (radius > targetRadius)
+        {
+            Vector3 direction = (planet.position - transform.position).normalized;
+            transform.position += direction * Time.deltaTime * Mathf.Min(radiusSpeed, radius - targetRadius);
+            radius = (transform.position - planet.position).magnitude;
+        }
+        
 
     }
 }
