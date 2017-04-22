@@ -25,7 +25,7 @@ public class ShootTurret : MonoBehaviour {
         if ((Input.GetButton("Fire1") && myTime > nextFire) && aim.canShoot)
         {
             nextFire = myTime + fireDelta;
-            newProjectile = Instantiate(projectile, transform.position + transform.forward * spawnOffset, transform.rotation) as GameObject;
+            PoolManager.instance.ReuseObject(projectile, transform.position + transform.forward * spawnOffset, transform.rotation);
 
             // create code here that animates the newProjectile
 
