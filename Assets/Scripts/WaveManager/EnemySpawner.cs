@@ -49,7 +49,6 @@ public class EnemySpawner : MonoBehaviour {
     {
         GameObject spawnLocation = spawns[Random.Range(0, spawns.Length)];
         GameObject newEnemy = Instantiate(enemy.Enemy, spawnLocation.transform.position,this.transform.rotation);
-//        newEnemy.SendMessage("SetValue",enemy.difficultyValue);
         difficulty -= enemy.difficultyValue;
         this.gameObject.GetComponent<WaveManager>().IncreaseEnemyCount();
     }

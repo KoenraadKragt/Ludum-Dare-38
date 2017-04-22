@@ -17,7 +17,6 @@ public class WaveManager : MonoBehaviour {
             difficulty += Mathf.FloorToInt((wave + 1)/2);
             isSpawning = true;
             StartCoroutine(NextWave(5));
-            UpdateStats();
         }
 	}
 
@@ -34,25 +33,11 @@ public class WaveManager : MonoBehaviour {
     public void IncreaseEnemyCount()
     {
         enemyCount += 1;
-        UpdateStats();
     }
 
     public void ReduceEnemyCount()
     {
         enemyCount -= 1;
-        UpdateStats();
-    }
-
-    public void UpdateStats()
-    {
-        if(enemyCount > 1 || enemyCount == 0)
-        {
-            GameObject.Find("WaveInfo").GetComponent<Text>().text = "Wave " + wave + " - " + enemyCount + " Enemies remaining";
-        }
-        else
-        {
-            GameObject.Find("WaveInfo").GetComponent<Text>().text = "Wave " + wave + " - " + enemyCount + " Enemy remaining";
-        }
     }
 
     IEnumerator NextWave(int waitTime)
