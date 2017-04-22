@@ -6,6 +6,6 @@ public class OnDestroyEnemy : MonoBehaviour {
 
     void OnDestroy()
     {
-        GameObject.Find("WaveManager").SendMessage("ReduceEnemyCount", null, SendMessageOptions.RequireReceiver);
+        GameObject.FindGameObjectWithTag("Manager").SendMessage("ReduceEnemyCount", null, SendMessageOptions.DontRequireReceiver);
     }
 }

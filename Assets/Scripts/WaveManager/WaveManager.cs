@@ -42,9 +42,11 @@ public class WaveManager : MonoBehaviour {
 
     IEnumerator NextWave(int waitTime)
     {
-        GameObject.Find("WavePopUpUI").GetComponent<WaveUIPopUp>().PopUp(wave);
+        if (GameObject.FindGameObjectWithTag("WaveUI"))
+        {
+            GameObject.FindGameObjectWithTag("WaveUI").GetComponent<WaveUIPopUp>().PopUp(wave);
+        }
         yield return new WaitForSeconds(waitTime);
-        //GameObject.Find("Spawners").SendMessage("SpawnWave", difficulty,SendMessageOptions.RequireReceiver);
         this.gameObject.GetComponent<EnemySpawner>().SpawnWave(difficulty);
     }
 }

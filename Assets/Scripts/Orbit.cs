@@ -15,7 +15,7 @@ public class Orbit : PoolObject {
 
 
 
-    void Start()
+    void OnEnable()
     {
         planet = GameObject.FindGameObjectWithTag("Planet").transform;
         
