@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileDamage : MonoBehaviour {
+public class ProjectileDamage : PoolObject {
 
     public int damage;
 
@@ -11,7 +11,7 @@ public class ProjectileDamage : MonoBehaviour {
         if(other.gameObject.tag == "Enemy")
         {
             other.gameObject.SendMessage("TakeDamage", damage);
-            Destroy(this.gameObject);
+            Destroy();
         }
     }
 }
