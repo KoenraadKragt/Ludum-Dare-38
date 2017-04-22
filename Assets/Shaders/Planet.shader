@@ -8,6 +8,8 @@ Properties {
 	_SSSAlbedo_aColor ("Albedo - Color", Color) = (0.627451,0.8,0.8823529,1)
 	_SSSVertex_aScale ("Vertex - Scale", Float) = 1.000000000
 	_SSSVertex_aMix_Amount ("Vertex - Mix Amount", Range(0.000000000,1.000000000)) = 1.000000000
+	_SSSAlbedo_aMix_Amount_2 ("Albedo - Mix Amount 2", Range(0.000000000,1.000000000)) = 1.000000000
+	_SSSAlbedo_aMix_Amount ("Albedo - Mix Amount", Range(0.000000000,1.000000000)) = 1.000000000
 }
 
 SubShader {
@@ -47,6 +49,8 @@ AlphaToMask Off
 				float4 _SSSAlbedo_aColor;
 				float _SSSVertex_aScale;
 				float _SSSVertex_aMix_Amount;
+				float _SSSAlbedo_aMix_Amount_2;
+				float _SSSAlbedo_aMix_Amount;
 
 			struct UsefulData{
 				float3 Albedo;
@@ -160,6 +164,10 @@ AlphaToMask Off
 	float3 LinearToGamma(float3 col){
 		return col;
 	}
+
+
+
+
 
 
 
@@ -413,14 +421,21 @@ float NoiseCloud3D(float3 P)
 					giInput.probePosition[1] = unity_SpecCube1_ProbePosition;
 				#endif
 				d.Smoothness = 0.0001;
-				d.LightSmoothness = 0.9;
+				d.LightSmoothness = 0.9068826;
 	//Generate layers for the Albedo channel.
+		//Generate Layer: Albedo 2
+			//Sample parts of the layer:
+				half4 Albedo_2Albedo_Sample1 = GammaToLinear(_SSSAlbedo_aColor);
+
+			//Blend the layer into the channel using the Mix blend mode
+				d.Albedo = lerp(d.Albedo,Albedo_2Albedo_Sample1.rgb,_SSSAlbedo_aMix_Amount_2);
+
 		//Generate Layer: Albedo
 			//Sample parts of the layer:
-				half4 AlbedoAlbedo_Sample1 = GammaToLinear(_SSSAlbedo_aColor);
+				half4 AlbedoAlbedo_Sample1 = float4(gi.light.dir,0);
 
-			//Set the channel to the new color
-				d.Albedo = AlbedoAlbedo_Sample1.rgb;
+			//Blend the layer into the channel using the Mix blend mode
+				d.Albedo = lerp(d.Albedo,AlbedoAlbedo_Sample1.rgb,_SSSAlbedo_aMix_Amount);
 
 				fixed3 worldN;
 				worldN = d.worldNormal;
@@ -478,6 +493,8 @@ AlphaToMask Off
 				float4 _SSSAlbedo_aColor;
 				float _SSSVertex_aScale;
 				float _SSSVertex_aMix_Amount;
+				float _SSSAlbedo_aMix_Amount_2;
+				float _SSSAlbedo_aMix_Amount;
 
 			struct UsefulData{
 				float3 Albedo;
@@ -568,6 +585,10 @@ AlphaToMask Off
 	float3 LinearToGamma(float3 col){
 		return col;
 	}
+
+
+
+
 
 
 
@@ -799,14 +820,21 @@ float NoiseCloud3D(float3 P)
 					giInput.probePosition[1] = unity_SpecCube1_ProbePosition;
 				#endif
 				d.Smoothness = 0.0001;
-				d.LightSmoothness = 0.9;
+				d.LightSmoothness = 0.9068826;
 	//Generate layers for the Albedo channel.
+		//Generate Layer: Albedo 2
+			//Sample parts of the layer:
+				half4 Albedo_2Albedo_Sample1 = GammaToLinear(_SSSAlbedo_aColor);
+
+			//Blend the layer into the channel using the Mix blend mode
+				d.Albedo = lerp(d.Albedo,Albedo_2Albedo_Sample1.rgb,_SSSAlbedo_aMix_Amount_2);
+
 		//Generate Layer: Albedo
 			//Sample parts of the layer:
-				half4 AlbedoAlbedo_Sample1 = GammaToLinear(_SSSAlbedo_aColor);
+				half4 AlbedoAlbedo_Sample1 = float4(gi.light.dir,0);
 
-			//Set the channel to the new color
-				d.Albedo = AlbedoAlbedo_Sample1.rgb;
+			//Blend the layer into the channel using the Mix blend mode
+				d.Albedo = lerp(d.Albedo,AlbedoAlbedo_Sample1.rgb,_SSSAlbedo_aMix_Amount);
 
 				fixed3 worldN;
 				worldN = d.worldNormal;
@@ -863,6 +891,8 @@ AlphaToMask Off
 				float4 _SSSAlbedo_aColor;
 				float _SSSVertex_aScale;
 				float _SSSVertex_aMix_Amount;
+				float _SSSAlbedo_aMix_Amount_2;
+				float _SSSAlbedo_aMix_Amount;
 
 			struct UsefulData{
 				float3 Albedo;
@@ -951,6 +981,10 @@ AlphaToMask Off
 	float3 LinearToGamma(float3 col){
 		return col;
 	}
+
+
+
+
 
 
 
@@ -1119,14 +1153,14 @@ float NoiseCloud3D(float3 P)
 					fixed3 lightDir = _WorldSpaceLightPos0.xyz;
 				#endif
 				d.Smoothness = 0.0001;
-				d.LightSmoothness = 0.9;
+				d.LightSmoothness = 0.9068826;
 	//Generate layers for the Albedo channel.
-		//Generate Layer: Albedo
+		//Generate Layer: Albedo 2
 			//Sample parts of the layer:
-				half4 AlbedoAlbedo_Sample1 = GammaToLinear(_SSSAlbedo_aColor);
+				half4 Albedo_2Albedo_Sample1 = GammaToLinear(_SSSAlbedo_aColor);
 
-			//Set the channel to the new color
-				d.Albedo = AlbedoAlbedo_Sample1.rgb;
+			//Blend the layer into the channel using the Mix blend mode
+				d.Albedo = lerp(d.Albedo,Albedo_2Albedo_Sample1.rgb,_SSSAlbedo_aMix_Amount_2);
 
 				c = float4(d.Albedo+d.Emission.rgb,d.Alpha+d.Emission.a);
 				c.a-=0;
@@ -1197,6 +1231,42 @@ SpecialType#!S2#^Float#^0#^CC0#?SpecialType
 InEditor#!S2#^Float#^1#^CC0#?InEditor
 NormalMap#!S2#^Float#^0#^CC0#?NormalMap
 CustomFallback#!S2#^Text#^_SSSVertex_aMix_Amount#^CC0#?CustomFallback
+CustomSpecial#!S2#^Text#^1#^CC0#?CustomSpecial
+Mask#!S2#^ObjectArray#^-1#^CC0#?Mask
+EndShaderInput
+BeginShaderInput
+Type#!S2#^Float#^4#^CC0#?Type
+VisName#!S2#^Text#^Albedo - Mix Amount 2#^CC0#?VisName
+ImageDefault#!S2#^Float#^0#^CC0#?ImageDefault
+Image#!S2#^Text#^#^CC0#?Image
+Cube#!S2#^Text#^#^CC0#?Cube
+Color#!S2#^Vec#^0,0,0,0#^CC0#?Color
+Number#!S2#^Float#^1#^CC0#?Number
+Range0#!S2#^Float#^0#^CC0#?Range0
+Range1#!S2#^Float#^1#^CC0#?Range1
+MainType#!S2#^Float#^0#^CC0#?MainType
+SpecialType#!S2#^Float#^0#^CC0#?SpecialType
+InEditor#!S2#^Float#^1#^CC0#?InEditor
+NormalMap#!S2#^Float#^0#^CC0#?NormalMap
+CustomFallback#!S2#^Text#^_SSSAlbedo_aMix_Amount_2#^CC0#?CustomFallback
+CustomSpecial#!S2#^Text#^1#^CC0#?CustomSpecial
+Mask#!S2#^ObjectArray#^-1#^CC0#?Mask
+EndShaderInput
+BeginShaderInput
+Type#!S2#^Float#^4#^CC0#?Type
+VisName#!S2#^Text#^Albedo - Mix Amount#^CC0#?VisName
+ImageDefault#!S2#^Float#^0#^CC0#?ImageDefault
+Image#!S2#^Text#^#^CC0#?Image
+Cube#!S2#^Text#^#^CC0#?Cube
+Color#!S2#^Vec#^0,0,0,0#^CC0#?Color
+Number#!S2#^Float#^1#^CC0#?Number
+Range0#!S2#^Float#^0#^CC0#?Range0
+Range1#!S2#^Float#^1#^CC0#?Range1
+MainType#!S2#^Float#^0#^CC0#?MainType
+SpecialType#!S2#^Float#^0#^CC0#?SpecialType
+InEditor#!S2#^Float#^1#^CC0#?InEditor
+NormalMap#!S2#^Float#^0#^CC0#?NormalMap
+CustomFallback#!S2#^Text#^_SSSAlbedo_aMix_Amount#^CC0#?CustomFallback
 CustomSpecial#!S2#^Text#^1#^CC0#?CustomSpecial
 Mask#!S2#^ObjectArray#^-1#^CC0#?Mask
 EndShaderInput
@@ -1326,7 +1396,7 @@ Disable Normals#!S2#^Float#^0#^CC0#?Disable Normals
 Specular On#!S2#^Toggle#^True#^CC0#?Specular On
 Specular Type#!S2#^Type#^0#^CC0#?Specular Type
 Spec Hardness#!S2#^Float#^0.0001#^CC0#?Spec Hardness
-Max Light Spec Hardness#!S2#^Float#^0.9#^CC0#?Max Light Spec Hardness
+Max Light Spec Hardness#!S2#^Float#^0.9068826#^CC0#?Max Light Spec Hardness
 Spec Energy Conserve#!S2#^Toggle#^True#^CC0#?Spec Energy Conserve
 Spec Offset#!S2#^Float#^0#^CC0#?Spec Offset
 Emission On#!S2#^Toggle#^False#^CC0#?Emission On
@@ -1378,7 +1448,7 @@ Is Mask#!S2#^Toggle#^False#^CC0#?Is Mask
 Is Lighting#!S2#^Toggle#^False#^CC0#?Is Lighting
 EndTag#!S2#^Text#^rgb#^CC0#?EndTag
 BeginShaderLayer
-Layer Name#!S2#^Text#^Albedo#^CC0#?Layer Name
+Layer Name#!S2#^Text#^Albedo 2#^CC0#?Layer Name
 Real Layer Type#!S2#^Text#^SLTColor#^CC0#?Real Layer Type
 Layer Type#!S2#^Type#^0#^CC0#?Layer Type
 Main Color#!S2#^Vec#^0.8,0.8,0.8,1#^CC0#?Main Color
@@ -1396,7 +1466,7 @@ Linearize Depth#!S2#^Toggle#^False#^CC0#?Linearize Depth
 UV Map#!S2#^Type#^0#^CC0#?UV Map
 Map Local#!S2#^Toggle#^False#^CC0#?Map Local
 Use Alpha#!S2#^Toggle#^False#^CC0#?Use Alpha
-Mix Amount#!S2#^Float#^1#^CC0#?Mix Amount
+Mix Amount#!S2#^Float#^1#^CC0 #^ 3#?Mix Amount
 Use Fadeout#!S2#^Toggle#^False#^CC0#?Use Fadeout
 Fadeout Limit Min#!S2#^Float#^0#^CC0#?Fadeout Limit Min
 Fadeout Limit Max#!S2#^Float#^10#^CC0#?Fadeout Limit Max
@@ -1407,6 +1477,40 @@ Stencil#!S2#^ObjectArray#^-1#^CC0#?Stencil
 Vertex Mask#!S2#^Float#^2#^CC0#?Vertex Mask
 Vertex Space#!S2#^Float#^0#^CC0#?Vertex Space
 Color#!S2#^Vec#^0.627451,0.8,0.8823529,1#^CC0 #^ 0#?Color
+EndShaderLayer
+BeginShaderLayer
+Layer Name#!S2#^Text#^Albedo#^CC0#?Layer Name
+Real Layer Type#!S2#^Text#^SLTData#^CC0#?Real Layer Type
+Layer Type#!S2#^Type#^0#^CC0#?Layer Type
+Main Color#!S2#^Vec#^0.8,0.8,0.8,1#^CC0#?Main Color
+Second Color#!S2#^Vec#^0,0,0,1#^CC0#?Second Color
+Main Texture#!S2#^Texture#^#^CC0#?Main Texture
+NCubemap#!S2#^Cubemap#^#^CC0#?NCubemap
+Noise Type#!S2#^Type#^0#^CC0#?Noise Type
+NNoise Dimensions#!S2#^Type#^0#^CC0#?NNoise Dimensions
+Noise A#!S2#^Float#^0#^CC0#?Noise A
+Noise B#!S2#^Float#^1#^CC0#?Noise B
+Noise C#!S2#^Toggle#^False#^CC0#?Noise C
+Light Data#!S2#^Type#^0#^CC0#?Light Data
+Special Type#!S2#^Type#^0#^CC0#?Special Type
+Linearize Depth#!S2#^Toggle#^False#^CC0#?Linearize Depth
+UV Map#!S2#^Type#^4#^CC0#?UV Map
+Map Local#!S2#^Toggle#^False#^CC0#?Map Local
+Use Alpha#!S2#^Toggle#^False#^CC0#?Use Alpha
+Mix Amount#!S2#^Float#^1#^CC0 #^ 4#?Mix Amount
+Use Fadeout#!S2#^Toggle#^False#^CC0#?Use Fadeout
+Fadeout Limit Min#!S2#^Float#^0#^CC0#?Fadeout Limit Min
+Fadeout Limit Max#!S2#^Float#^10#^CC0#?Fadeout Limit Max
+Fadeout Start#!S2#^Float#^3#^CC0#?Fadeout Start
+Fadeout End#!S2#^Float#^5#^CC0#?Fadeout End
+Mix Type#!S2#^Type#^0#^CC0#?Mix Type
+Stencil#!S2#^ObjectArray#^-1#^CC0#?Stencil
+Vertex Mask#!S2#^Float#^2#^CC0#?Vertex Mask
+Vertex Space#!S2#^Float#^0#^CC0#?Vertex Space
+Color#!S2#^Vec#^0.627451,0.8,0.8823529,1#^CC0 #^ 0#?Color
+Color 2#!S2#^Vec#^0,0,0,1#^CC0#?Color B
+PokeChannel#!S2#^Type#^0#^CC0#?PokeChannel
+Data#!S2#^Type#^0#^CC0#?Data
 EndShaderLayer
 EndShaderLayerList
 BeginShaderLayerList
