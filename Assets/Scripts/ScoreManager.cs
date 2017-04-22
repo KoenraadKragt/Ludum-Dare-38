@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour {
 
-    public int score;
+    protected int score;
 	
     public void IncreaseScore(int score)
     {
         this.score += score;
+        if (GameObject.FindGameObjectWithTag("ScoreUI"))
+        {
+            GameObject.FindGameObjectWithTag("ScoreUI").SendMessage("SetScore", this.score);
+        }
     }
 
     public void DecreaseScore(int score)
@@ -18,11 +22,20 @@ public class ScoreManager : MonoBehaviour {
         {
             score = 0;
         }
+
+        if (GameObject.FindGameObjectWithTag("ScoreUI"))
+        {
+            GameObject.FindGameObjectWithTag("ScoreUI").SendMessage("SetScore", score);
+        }
     }
 
     public void SetScore(int score)
     {
         this.score = score;
+        if (GameObject.FindGameObjectWithTag("ScoreUI"))
+        {
+            GameObject.FindGameObjectWithTag("ScoreUI").SendMessage("SetScore", score);
+        }
     }
 
     public int GetScore()

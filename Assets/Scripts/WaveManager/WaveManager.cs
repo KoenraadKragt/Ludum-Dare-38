@@ -16,6 +16,10 @@ public class WaveManager : MonoBehaviour {
             wave += 1;
             difficulty += Mathf.FloorToInt((wave + 1)/2);
             isSpawning = true;
+            if(this.gameObject.GetComponent<ScoreManager>() && this.gameObject.GetComponent<ResourceManager>())
+            {
+                this.gameObject.GetComponent<ScoreManager>().IncreaseScore(this.gameObject.GetComponent<ResourceManager>().GetScrap());
+            }
             StartCoroutine(NextWave(5));
         }
 	}

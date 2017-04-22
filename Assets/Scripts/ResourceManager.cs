@@ -24,8 +24,12 @@ public class ResourceManager : MonoBehaviour {
     public List<ScrapResource> scrapObjects;
 
 
-    public int scrap = 0;
+    protected int scrap = 0;
     
+    public int GetScrap()
+    {
+        return scrap;
+    }
 
     public void addScrap(int amount)
     {
