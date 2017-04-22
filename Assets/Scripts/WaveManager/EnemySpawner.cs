@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
     public EnemyStats[] easyEnemy, hardEnemy;
-    public GameObject[] spawns;
+    public float spawnCooldown;
     int difficulty;
 
 	public void SpawnWave(int difficultyValue)
@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour {
 
         if (difficulty > 0)
         {
-            StartCoroutine(SpawnCooldown(2));
+            StartCoroutine(SpawnCooldown(spawnCooldown));
         }
 
         if (difficulty <= 0)
@@ -47,14 +47,33 @@ public class EnemySpawner : MonoBehaviour {
 	
     public void Spawn(EnemyStats enemy)
     {
-        GameObject spawnLocation = spawns[Random.Range(0, spawns.Length)];
-        GameObject newEnemy = Instantiate(enemy.Enemy, spawnLocation.transform.position,this.transform.rotation);
-//        newEnemy.SendMessage("SetValue",enemy.difficultyValue);
+        int spawnDirection = Random.Range(0, 4);
+        Vector3 spawnLocation = new Vector3(10, 0, 0);
+        switch (spawnDirection)
+        {
+            case 0:
+                spawnLocation = new Vector3(0.0f, Random.Range(0.0f, 1.0f), 0.0f);
+                Debug.Log("0");
+                break;
+            case 1:
+                spawnLocation = new Vector3(1.0f, Random.Range(0.0f, 1.0f), 0.0f);
+                Debug.Log("1");
+                break;
+            case 2:
+                spawnLocation = new Vector3(Random.Range(0.0f, 1.0f), 0.0f, 0.0f);
+                Debug.Log("2");
+                break;
+            case 3:
+                spawnLocation = new Vector3(Random.Range(0.0f, 1.0f), 1.0f, 0.0f);
+                Debug.Log("3");
+                break;
+        }
+        GameObject newEnemy = Instantiate(enemy.Enemy, Camera.main.ViewportToWorldPoint(spawnLocation),this.transform.rotation);
         difficulty -= enemy.difficultyValue;
         this.gameObject.GetComponent<WaveManager>().IncreaseEnemyCount();
     }
   
-    IEnumerator SpawnCooldown(int waitTime)
+    IEnumerator SpawnCooldown(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         SpawnSelect();
