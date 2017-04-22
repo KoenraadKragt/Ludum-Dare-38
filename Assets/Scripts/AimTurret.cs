@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class AimTurret : MonoBehaviour {
 
-    GameObject crosshair;
+    public float maxAngle = 90;
+    private GameObject crosshair;
+    private Transform turretAnchor;
 
     void Start()
     {
         crosshair = GameObject.FindGameObjectWithTag("CrossHair");
+        turretAnchor = transform.parent;
 
     }
 
 	void Update () {
-        transform.LookAt(crosshair.transform.position);
+        Quaternion targetRot;
+
+        targetRot = Quaternion.LookRotation(crosshair.transform.position);
+        if (Vector3.Angle(crosshair.transform.position - transform.position, turretAnchor.forward) < maxAngle)
+        {
+            transform.rotation = targetRot;
+        }
+            
 	}
 }
