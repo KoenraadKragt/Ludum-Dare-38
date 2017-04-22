@@ -12,7 +12,7 @@ public class SpawnTurret : MonoBehaviour {
     void Start () {
 
         crosshair = GameObject.FindGameObjectWithTag("CrossHair");
-        planetRadius = GetComponent<SphereCollider>().radius * transform.localScale.x;
+        planetRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
     }
 	
 	void Update () {
