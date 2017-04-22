@@ -8,6 +8,6 @@ public class CreateScrap : MonoBehaviour {
 
 	public void Death()
     {
-        Instantiate(scrapPrefab, transform.position, transform.rotation);
+        PoolManager.instance.ReuseObject(scrapPrefab, transform.position, transform.rotation);
     }
 }
