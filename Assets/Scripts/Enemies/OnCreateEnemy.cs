@@ -9,6 +9,6 @@ public class OnCreateEnemy : MonoBehaviour {
 	// Use this for initialization
 	void Update () {
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f,-Camera.main.transform.position.z)),step);
+        transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("PlanetBase_01").transform.position,step);
 	}
 }

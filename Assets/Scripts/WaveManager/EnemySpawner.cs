@@ -53,19 +53,15 @@ public class EnemySpawner : MonoBehaviour {
         {
             case 0:
                 spawnLocation = new Vector3(0.0f, Random.Range(0.0f, 1.0f), -Camera.main.transform.position.z);
-                Debug.Log("0");
                 break;
             case 1:
                 spawnLocation = new Vector3(1.0f, Random.Range(0.0f, 1.0f), -Camera.main.transform.position.z);
-                Debug.Log("1");
                 break;
             case 2:
                 spawnLocation = new Vector3(Random.Range(0.0f, 1.0f), 0.0f, -Camera.main.transform.position.z);
-                Debug.Log("2");
                 break;
             case 3:
                 spawnLocation = new Vector3(Random.Range(0.0f, 1.0f), 1.0f, -Camera.main.transform.position.z);
-                Debug.Log("3");
                 break;
         }
         GameObject newEnemy = Instantiate(enemy.Enemy, Camera.main.ViewportToWorldPoint(spawnLocation),this.transform.rotation);
