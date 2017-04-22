@@ -27,7 +27,6 @@ public class SpawnTurret : MonoBehaviour {
             {
                 placeTurret();
                 isBuying = false;
-                cost += 1;
             }
         }
 
@@ -37,6 +36,7 @@ public class SpawnTurret : MonoBehaviour {
             if (ResourceManager.instance.removeScrap(cost))
             {
                 isBuying = true;
+                cost += 1;
             }
         }
 	}

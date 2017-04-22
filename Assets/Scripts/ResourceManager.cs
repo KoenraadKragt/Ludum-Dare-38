@@ -24,7 +24,7 @@ public class ResourceManager : MonoBehaviour {
     public List<ScrapResource> scrapObjects;
 
 
-    protected int scrap = 0;
+    private int scrap = 0;
     
     public int GetScrap()
     {
@@ -45,9 +45,9 @@ public class ResourceManager : MonoBehaviour {
 
         scrap -= amount;
 
-        if(scrapObjects.Count >= amount)
+        if (scrapObjects.Count >= amount)
         {
-            for (int i = 0; i < amount; i++)
+            for (int i = amount - 1; i >= 0 ; i--)
             {
                 scrapObjects[i].Expend();
                 scrapObjects.RemoveAt(i);
