@@ -50,6 +50,12 @@ public class WaveManager : MonoBehaviour {
         {
             GameObject.FindGameObjectWithTag("WaveUI").GetComponent<WaveUIPopUp>().PopUp(wave);
         }
+        if (CameraZoom.instance != null)
+        {
+            CameraZoom.instance.waveBasedZoom(wave);
+
+        }
+
         yield return new WaitForSeconds(waitTime);
         this.gameObject.GetComponent<EnemySpawner>().SpawnWave(difficulty);
     }
