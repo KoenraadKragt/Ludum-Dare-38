@@ -21,6 +21,8 @@ public class AimTurret : MonoBehaviour {
 	void Update () {
         Quaternion targetRot;
 
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
+
         targetRot = Quaternion.LookRotation(crosshair.transform.position);
         if (Vector3.Angle(crosshair.transform.position - transform.position, turretAnchor.forward) < maxAngle)
         {
