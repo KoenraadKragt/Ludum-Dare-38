@@ -22,13 +22,14 @@ public class CameraZoom : MonoBehaviour {
 
     public float minZoom = 5;
     public float maxZoom = 16;
+    public float incrementPerWave = 0.2f;
     public float zoomRate = 1;
 
     private float targetSize;
 
     public void waveBasedZoom(int waveNum)
     {
-        targetSize = Camera.main.orthographicSize + waveNum;
+        targetSize = Camera.main.orthographicSize + (waveNum * incrementPerWave);
 
 
         targetSize = Mathf.Min(maxZoom, Mathf.Max(minZoom, targetSize));
