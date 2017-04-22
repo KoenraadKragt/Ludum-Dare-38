@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour {
 
+    public float offsetPercentage = 0.1f;
     [Range(0,10)]
     public float targetRadius = 4;
     public float rotationSpeed = 70;
@@ -18,13 +19,18 @@ public class Orbit : MonoBehaviour {
     void Start () {
         planet = GameObject.FindGameObjectWithTag("Planet").transform;
         radius = (transform.position - planet.position).magnitude;
+
+        float radiusOffset = (targetRadius * offsetPercentage);
+        targetRadius = Random.Range(targetRadius, targetRadius + radiusOffset);
+        float speedOffset = (rotationSpeed * offsetPercentage);
+        rotationSpeed = Random.Range(rotationSpeed - speedOffset, rotationSpeed + speedOffset);
 	}
 	
 
 	void Update () {
         transform.RotateAround(planet.position, Vector3.forward, rotationSpeed *  Time.deltaTime);
 
-        if (radius > targetRadius)
+        if (radius != targetRadius)
         {
             Vector3 direction = (planet.position - transform.position).normalized;
             transform.position += direction * Time.deltaTime * Mathf.Min(radiusSpeed, radius - targetRadius);
