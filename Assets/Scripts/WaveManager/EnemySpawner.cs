@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour {
 
     public EnemyStats[] easyEnemy, hardEnemy;
+    public float spawnCooldown;
     int difficulty;
 
 	public void SpawnWave(int difficultyValue)
@@ -35,7 +36,7 @@ public class EnemySpawner : MonoBehaviour {
 
         if (difficulty > 0)
         {
-            StartCoroutine(SpawnCooldown(2));
+            StartCoroutine(SpawnCooldown(spawnCooldown));
         }
 
         if (difficulty <= 0)
@@ -72,7 +73,7 @@ public class EnemySpawner : MonoBehaviour {
         this.gameObject.GetComponent<WaveManager>().IncreaseEnemyCount();
     }
   
-    IEnumerator SpawnCooldown(int waitTime)
+    IEnumerator SpawnCooldown(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         SpawnSelect();
