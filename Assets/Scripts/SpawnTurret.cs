@@ -41,7 +41,6 @@ public class SpawnTurret : MonoBehaviour {
         Vector3 direction = ( crosshair.transform.position - transform.position ).normalized;
         GameObject turret = (GameObject)Instantiate(turretPrefab);
         turret.transform.parent = transform;
-        Debug.Log(planetRadius);
         turret.transform.position = transform.position + direction * planetRadius;
         turret.transform.LookAt(crosshair.transform.position);
     }
