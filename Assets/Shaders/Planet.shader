@@ -6,7 +6,7 @@ Shader "Planet" {//The Shaders Name
 Properties {
 	[HideInInspector]Texcoord ("Generic UV Coords (You shouldn't be seeing this aaaaah!)", 2D) = "white" {}
 	_Color ("Albedo - Color", Color) = (0.627451,0.8,0.8823529,1)
-	_Shininess ("Vertex Light - Intensety", Range(0.000000000,1.000000000)) = 1.000000000
+	_SSSVertex_Color_aIntensety ("Vertex Color - Intensety", Range(0.000000000,1.000000000)) = 1.000000000
 	_SSSVertex_aStrength ("Vertex - Strength", Float) = 1.000000000
 	_SSSVertex_aIntensety ("Vertex - Intensety", Range(0.000000000,1.000000000)) = 1.000000000
 	_SSSVertex_aMin_Height ("Vertex - Min Height", Range(0.000000000,0.500000000)) = 0.000000000
@@ -50,7 +50,7 @@ AlphaToMask Off
 
 			//Make our inputs accessible by declaring them here.
 				float4 _Color;
-				float _Shininess;
+				float _SSSVertex_Color_aIntensety;
 				float _SSSVertex_aStrength;
 				float _SSSVertex_aIntensety;
 				float _SSSVertex_aMin_Height;
@@ -446,7 +446,7 @@ float NoiseCloud3D(float3 P)
 				half4 AlbedoAlbedo_Sample1 = float4(gi.light.dir,0);
 
 			//Blend the layer into the channel using the Mix blend mode
-				d.Albedo = lerp(d.Albedo,AlbedoAlbedo_Sample1.rgb,_Shininess);
+				d.Albedo = lerp(d.Albedo,AlbedoAlbedo_Sample1.rgb,_SSSVertex_Color_aIntensety);
 
 				fixed3 worldN;
 				worldN = d.worldNormal;
@@ -502,7 +502,7 @@ AlphaToMask Off
 
 			//Make our inputs accessible by declaring them here.
 				float4 _Color;
-				float _Shininess;
+				float _SSSVertex_Color_aIntensety;
 				float _SSSVertex_aStrength;
 				float _SSSVertex_aIntensety;
 				float _SSSVertex_aMin_Height;
@@ -853,7 +853,7 @@ float NoiseCloud3D(float3 P)
 				half4 AlbedoAlbedo_Sample1 = float4(gi.light.dir,0);
 
 			//Blend the layer into the channel using the Mix blend mode
-				d.Albedo = lerp(d.Albedo,AlbedoAlbedo_Sample1.rgb,_Shininess);
+				d.Albedo = lerp(d.Albedo,AlbedoAlbedo_Sample1.rgb,_SSSVertex_Color_aIntensety);
 
 				fixed3 worldN;
 				worldN = d.worldNormal;
@@ -908,7 +908,7 @@ AlphaToMask Off
 
 			//Make our inputs accessible by declaring them here.
 				float4 _Color;
-				float _Shininess;
+				float _SSSVertex_Color_aIntensety;
 				float _SSSVertex_aStrength;
 				float _SSSVertex_aIntensety;
 				float _SSSVertex_aMin_Height;
@@ -1227,7 +1227,7 @@ Mask#!S2#^ObjectArray#^-1#^CC0#?Mask
 EndShaderInput
 BeginShaderInput
 Type#!S2#^Float#^4#^CC0#?Type
-VisName#!S2#^Text#^Vertex Light - Intensety#^CC0#?VisName
+VisName#!S2#^Text#^Vertex Color - Intensety#^CC0#?VisName
 ImageDefault#!S2#^Float#^0#^CC0#?ImageDefault
 Image#!S2#^Text#^#^CC0#?Image
 Cube#!S2#^Text#^#^CC0#?Cube
@@ -1235,11 +1235,11 @@ Color#!S2#^Vec#^0,0,0,0#^CC0#?Color
 Number#!S2#^Float#^1#^CC0#?Number
 Range0#!S2#^Float#^0#^CC0#?Range0
 Range1#!S2#^Float#^1#^CC0#?Range1
-MainType#!S2#^Float#^6#^CC0#?MainType
+MainType#!S2#^Float#^0#^CC0#?MainType
 SpecialType#!S2#^Float#^0#^CC0#?SpecialType
 InEditor#!S2#^Float#^1#^CC0#?InEditor
 NormalMap#!S2#^Float#^0#^CC0#?NormalMap
-CustomFallback#!S2#^Text#^_Shininess#^CC0#?CustomFallback
+CustomFallback#!S2#^Text#^_SSSVertex_Color_aIntensety#^CC0#?CustomFallback
 CustomSpecial#!S2#^Text#^1#^CC0#?CustomSpecial
 Mask#!S2#^ObjectArray#^-1#^CC0#?Mask
 EndShaderInput
