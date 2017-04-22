@@ -5,9 +5,18 @@ using UnityEngine;
 public class CreateScrap : MonoBehaviour {
 
     public GameObject scrapPrefab;
+    private bool scrappable = true;
 
-	public void Death()
+    public void ScrapCollision ()
     {
-        PoolManager.instance.ReuseObject(scrapPrefab, transform.position, transform.rotation);
+        scrappable = false;
+    }
+
+    public void Death()
+    {
+        if (scrappable)
+        {
+            PoolManager.instance.ReuseObject(scrapPrefab, transform.position, transform.rotation);
+        }
     }
 }
