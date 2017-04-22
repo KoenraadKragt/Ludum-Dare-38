@@ -6,6 +6,7 @@ public class ShootTurret : MonoBehaviour {
 
     public GameObject projectile;
     public float fireDelta = 0.5F;
+    public float spawnOffset;
 
     private float nextFire = 0.5F;
     private GameObject newProjectile;
@@ -24,7 +25,7 @@ public class ShootTurret : MonoBehaviour {
         if ((Input.GetButton("Fire1") && myTime > nextFire) && aim.canShoot)
         {
             nextFire = myTime + fireDelta;
-            newProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+            newProjectile = Instantiate(projectile, transform.position + transform.forward * spawnOffset, transform.rotation) as GameObject;
 
             // create code here that animates the newProjectile
 
