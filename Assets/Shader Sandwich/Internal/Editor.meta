@@ -1,17 +1,8 @@
 fileFormatVersion: 2
-guid: 2a534a0c25057fa4c98fba95c14decfe
-labels:
-- Shader
-- Editor
-- Visual
-- Art
-- Stylistic
-- Shaders
-- Materials
-- Graphics
+guid: bf539433a2b8e12419c4fa70ba551b4d
 folderAsset: yes
-timeCreated: 1435677011
-licenseType: Store
+timeCreated: 1492857360
+licenseType: Free
 DefaultImporter:
   userData: 
   assetBundleName: 
