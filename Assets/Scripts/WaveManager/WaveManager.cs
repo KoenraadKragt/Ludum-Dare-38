@@ -57,6 +57,6 @@ public class WaveManager : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(waitTime);
-        this.gameObject.GetComponent<EnemySpawner>().SpawnWave(difficulty);
+        this.gameObject.GetComponent<EnemySpawner>().SpawnWave(difficulty,wave);
     }
 }

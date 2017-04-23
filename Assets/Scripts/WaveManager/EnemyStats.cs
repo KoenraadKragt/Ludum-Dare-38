@@ -7,4 +7,6 @@ public class EnemyStats
 
     public GameObject Enemy;
     public int difficultyValue;
+    public int minimumWave;
+    public int maximumWave;
 }
