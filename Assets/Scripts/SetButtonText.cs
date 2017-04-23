@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SetButtonText : MonoBehaviour {
 
-    public string turretName = "Turret";
+    public Turrets turretType = Turrets.BasicTurret;
 
     private Text textComponent;
     private SpawnTurret buyScript;
@@ -19,6 +19,6 @@ public class SetButtonText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        textComponent.text = buyScript.cost + "$: " + turretName;
+        textComponent.text = buyScript.shopEntries[(int)turretType].cost + "$: " + turretType.ToString();
 	}
 }

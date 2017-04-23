@@ -2,13 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Turrets
+{
+    BasicTurret,
+    AutoTurret
+}
+
+[System.Serializable]
+public struct ShopEntry
+{
+    public Turrets turretType;
+    public GameObject turretPrefab;
+    public int cost;
+    public int costIncrement;
+}
+
 public class SpawnTurret : MonoBehaviour {
 
-    public bool isBuying = false;
-    public GameObject turretPrefab;
     private GameObject crosshair;
     private float planetRadius;
-    public int cost = 1;
+
+    public ShopEntry[] shopEntries = new ShopEntry[2];
+    private Turrets currentType = Turrets.BasicTurret;
+
+
+    public bool isBuying = false;
+    
 
     void Start () {
 
@@ -17,11 +36,11 @@ public class SpawnTurret : MonoBehaviour {
     }
 	
 	void Update () {
-
-        //if buying:
+        
 
         if (isBuying)
         {
+            // TODO: placing graphics
             Debug.DrawLine(transform.position, crosshair.transform.position, Color.green);
             if (Input.GetButtonDown("Fire1"))
             {
@@ -33,25 +52,26 @@ public class SpawnTurret : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            BuyTurret();
+            BuyTurret((int)Turrets.BasicTurret);
         }
 	}
 
     private void placeTurret()
     {
         Vector3 direction = ( crosshair.transform.position - transform.position ).normalized;
-        GameObject turret = (GameObject)Instantiate(turretPrefab);
+        GameObject turret = (GameObject)Instantiate(shopEntries[(int)currentType].turretPrefab);
         turret.transform.parent = transform;
         turret.transform.position = transform.position + direction * planetRadius;
         turret.transform.LookAt(crosshair.transform.position);
     }
 
-    public void BuyTurret()
+    public void BuyTurret(int type)
     {
-        if (ResourceManager.instance.removeScrap(cost))
+        currentType = (Turrets)type;
+        if (ResourceManager.instance.removeScrap ( shopEntries[(int)currentType].cost) )
         {
             isBuying = true;
-            cost += 1;
+            shopEntries[(int)currentType].cost += shopEntries[(int)currentType].costIncrement;
         }
     }
 }
