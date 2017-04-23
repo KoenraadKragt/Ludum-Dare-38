@@ -13,10 +13,12 @@ public class ShootTurret : MonoBehaviour {
     private float myTime = 0.0F;
 
     private AimTurret aim;
+    private Animator anim;
 
     void Start()
     {
         aim = gameObject.GetComponent<AimTurret>();
+        anim = GetComponent<Animator>();
     }
 
     void Update () {
@@ -28,6 +30,7 @@ public class ShootTurret : MonoBehaviour {
             PoolManager.instance.ReuseObject(projectile, transform.position + transform.forward * spawnOffset, transform.rotation);
 
             // create code here that animates the newProjectile
+            anim.SetTrigger("Fire");
 
             nextFire = nextFire - myTime;
             myTime = 0.0F;
