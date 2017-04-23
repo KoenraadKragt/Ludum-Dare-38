@@ -30,7 +30,8 @@ public class ShootTurret : MonoBehaviour {
             PoolManager.instance.ReuseObject(projectile, transform.position + transform.forward * spawnOffset, transform.rotation);
 
             // create code here that animates the newProjectile
-            anim.SetTrigger("Fire");
+            if(anim != null)
+                anim.SetTrigger("Fire");
 
             nextFire = nextFire - myTime;
             myTime = 0.0F;
