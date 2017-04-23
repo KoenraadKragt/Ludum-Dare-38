@@ -20,29 +20,30 @@ public class AudioManager : MonoBehaviour {
     }
     #endregion
 
-    public AudioClip enemyDeath;
-    public AudioClip shoot;
+    public GameObject enemyObject;
+    private AudioSource enemySource;
 
-    private AudioSource audio;
+    public GameObject shootObject;
+    private AudioSource shootSource;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        enemySource = enemyObject.GetComponent<AudioSource>();
+        shootSource = shootObject.GetComponent<AudioSource>();
     }
 
     public void PlayEnemyDeath()
     {
-        playSound(enemyDeath);
+        playSound(enemySource);
     }
     public void PlayShoot()
     {
-        playSound(shoot);
+        playSound(shootSource);
     }
 
-    private void playSound(AudioClip clip)
+    private void playSound(AudioSource source)
     {
-        audio.Stop();
-        audio.clip = clip;
-        audio.Play();
+        source.Stop();
+        source.Play();
     }
 }
