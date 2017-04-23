@@ -1,60 +1,30 @@
 fileFormatVersion: 2
-guid: c85b11f414632ea4792ec7f1e88134c8
-timeCreated: 1492959120
+guid: c013a63e5ffaacf4ea3261fdf7543155
+timeCreated: 1492971507
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Enemy_01
-    100004: Enemy_02
-    100006: Enemy_03
-    100008: Enemy_04
-    100010: Enemy_05
-    100012: Enemy_06
-    100014: Enemy_07
-    100016: Enemy_08
-    100018: Enemy_09
-    400000: //RootNode
-    400002: Enemy_01
-    400004: Enemy_02
-    400006: Enemy_03
-    400008: Enemy_04
-    400010: Enemy_05
-    400012: Enemy_06
-    400014: Enemy_07
-    400016: Enemy_08
-    400018: Enemy_09
-    2300000: Enemy_01
-    2300002: Enemy_02
-    2300004: Enemy_03
-    2300006: Enemy_04
-    2300008: Enemy_05
-    2300010: Enemy_06
-    2300012: Enemy_07
-    2300014: Enemy_08
-    2300016: Enemy_09
-    3300000: Enemy_01
-    3300002: Enemy_02
-    3300004: Enemy_03
-    3300006: Enemy_04
-    3300008: Enemy_05
-    3300010: Enemy_06
-    3300012: Enemy_07
-    3300014: Enemy_08
-    3300016: Enemy_09
-    4300000: Enemy_04
-    4300002: Enemy_01
-    4300004: Enemy_02
-    4300006: Enemy_05
-    4300008: Enemy_07
-    4300010: Enemy_03
-    4300012: Enemy_06
-    4300014: Enemy_08
-    4300016: Enemy_09
+    100000: Asteroid
+    100002: Asteroid001
+    100004: Asteroid002
+    100006: //RootNode
+    400000: Asteroid
+    400002: Asteroid001
+    400004: Asteroid002
+    400006: //RootNode
+    2300000: Asteroid
+    2300002: Asteroid001
+    2300004: Asteroid002
+    3300000: Asteroid
+    3300002: Asteroid001
+    3300004: Asteroid002
+    4300000: Asteroid
+    4300002: Asteroid001
+    4300004: Asteroid002
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -95,10 +65,10 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 0
+    normalImportMode: 1
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -114,10 +84,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
