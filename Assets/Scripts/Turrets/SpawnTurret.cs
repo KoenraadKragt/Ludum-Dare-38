@@ -72,7 +72,8 @@ public class SpawnTurret : MonoBehaviour {
         GameObject turret = (GameObject)Instantiate(shopEntries[(int)currentType].turretPrefab);
         turret.transform.parent = transform;
         turret.transform.position = transform.position + direction * planetRadius;
-        turret.transform.LookAt(crosshair.transform.position);
+
+        turret.transform.forward = direction;
     }
 
     public void BuyTurret(int type)
