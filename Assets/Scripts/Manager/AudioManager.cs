@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour {
     #endregion
 
     public AudioClip enemyDeath;
+    public AudioClip shoot;
 
     private AudioSource audio;
 
@@ -31,8 +32,17 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayEnemyDeath()
     {
+        playSound(enemyDeath);
+    }
+    public void PlayShoot()
+    {
+        playSound(shoot);
+    }
+
+    private void playSound(AudioClip clip)
+    {
         audio.Stop();
-        audio.clip = enemyDeath;
+        audio.clip = clip;
         audio.Play();
     }
 }
