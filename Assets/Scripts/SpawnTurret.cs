@@ -22,6 +22,8 @@ public class SpawnTurret : MonoBehaviour {
     private GameObject crosshair;
     private float planetRadius;
 
+    public GameObject spawningGraphics;
+
     public ShopEntry[] shopEntries = new ShopEntry[2];
     private Turrets currentType = Turrets.BasicTurret;
 
@@ -33,6 +35,8 @@ public class SpawnTurret : MonoBehaviour {
 
         crosshair = GameObject.FindGameObjectWithTag("CrossHair");
         planetRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
+
+        spawningGraphics.SetActive(false);
     }
 	
 	void Update () {
@@ -40,12 +44,17 @@ public class SpawnTurret : MonoBehaviour {
 
         if (isBuying)
         {
+            spawningGraphics.SetActive(true);
+            Vector3 direction = (crosshair.transform.position - transform.position).normalized;
+            spawningGraphics.transform.position = transform.position + direction * planetRadius;
+            spawningGraphics.transform.up = direction;
             // TODO: placing graphics
             Debug.DrawLine(transform.position, crosshair.transform.position, Color.green);
             if (Input.GetButtonDown("Fire1"))
             {
                 placeTurret();
                 isBuying = false;
+                spawningGraphics.SetActive(false);
             }
         }
 
@@ -72,6 +81,8 @@ public class SpawnTurret : MonoBehaviour {
         {
             isBuying = true;
             shopEntries[(int)currentType].cost += shopEntries[(int)currentType].costIncrement;
+
+
         }
     }
 }
