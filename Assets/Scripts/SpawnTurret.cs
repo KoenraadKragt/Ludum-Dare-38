@@ -33,11 +33,7 @@ public class SpawnTurret : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (ResourceManager.instance.removeScrap(cost))
-            {
-                isBuying = true;
-                cost += 1;
-            }
+            BuyTurret();
         }
 	}
 
@@ -48,5 +44,14 @@ public class SpawnTurret : MonoBehaviour {
         turret.transform.parent = transform;
         turret.transform.position = transform.position + direction * planetRadius;
         turret.transform.LookAt(crosshair.transform.position);
+    }
+
+    public void BuyTurret()
+    {
+        if (ResourceManager.instance.removeScrap(cost))
+        {
+            isBuying = true;
+            cost += 1;
+        }
     }
 }

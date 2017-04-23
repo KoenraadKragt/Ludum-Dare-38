@@ -18,17 +18,21 @@ public class Orbit : PoolObject {
     void OnEnable()
     {
         planet = GameObject.FindGameObjectWithTag("Planet").transform;
-        
 
-    }
-
-    public override void OnObjectReuse()
-    {
         radius = (transform.position - planet.position).magnitude;
         float radiusOffset = (targetRadius * offsetPercentage);
         targetRadius = Random.Range(targetRadius, targetRadius + radiusOffset);
         float speedOffset = (rotationSpeed * offsetPercentage);
         rotationSpeed = Random.Range(rotationSpeed - speedOffset, rotationSpeed + speedOffset);
+    }
+
+    public override void OnObjectReuse()
+    {
+        //radius = (transform.position - planet.position).magnitude;
+        //float radiusOffset = (targetRadius * offsetPercentage);
+        //targetRadius = Random.Range(targetRadius, targetRadius + radiusOffset);
+        //float speedOffset = (rotationSpeed * offsetPercentage);
+        //rotationSpeed = Random.Range(rotationSpeed - speedOffset, rotationSpeed + speedOffset);
     }
 
 
