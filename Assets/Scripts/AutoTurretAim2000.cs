@@ -8,7 +8,13 @@ public class AutoTurretAim2000 : MonoBehaviour {
 
     void Update()
     {
-        
+        if (targets.Count>0)
+        {
+            while (targets[0] == null)
+            {
+                targets.RemoveAt(0);
+            }
+        }
 
         aimAtTarget();
     }
