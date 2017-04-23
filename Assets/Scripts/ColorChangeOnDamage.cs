@@ -23,6 +23,7 @@ public class ColorChangeOnDamage : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AudioManager.instance.playSound(Sounds.PlanetDamage);
         //Reset
         currentLerpTime = 0f;
 

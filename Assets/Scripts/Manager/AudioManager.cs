@@ -6,7 +6,8 @@ public enum Sounds
 {
     EnemyDeath,
     TurretShoot,
-    TurretPlace
+    TurretPlace,
+    PlanetDamage
 }
 
 public class AudioManager : MonoBehaviour {
@@ -36,6 +37,7 @@ public class AudioManager : MonoBehaviour {
         {
             AudioSource src = gameObject.AddComponent<AudioSource>() as AudioSource;
             src.clip = clips[i];
+            src.playOnAwake = false;
             sources.Add(src);
         }
 
