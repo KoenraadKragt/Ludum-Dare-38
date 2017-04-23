@@ -1,7 +1,7 @@
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Glass" {//The Shaders Name
+Shader "Pixel" {//The Shaders Name
 //The inputs shown in the material panel
 Properties {
 	[HideInInspector]Texcoord ("Generic UV Coords (You shouldn't be seeing this aaaaah!)", 2D) = "white" {}
@@ -468,7 +468,7 @@ CustomFallback#!S2#^Text#^_SSSAlbedo_aSize#^CC0#?CustomFallback
 CustomSpecial#!S2#^Text#^1#^CC0#?CustomSpecial
 Mask#!S2#^ObjectArray#^-1#^CC0#?Mask
 EndShaderInput
-ShaderName#!S2#^Text#^Glass#^CC0#?ShaderName
+ShaderName#!S2#^Text#^Pixel#^CC0#?ShaderName
 Tech Lod#!S2#^Float#^200#^CC0#?Tech Lod
 Cull#!S2#^Type#^1#^CC0#?Cull
 Fallback#!S2#^Type#^0#^CC0#?Fallback
