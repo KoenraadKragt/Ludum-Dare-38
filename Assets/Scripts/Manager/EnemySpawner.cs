@@ -31,7 +31,6 @@ public class EnemySpawner : MonoBehaviour {
                     temp2[j] = temp[j];
                 }
                 temp = temp2;
-                Debug.Log("ADDED");
             }
         }
         currentEnemyList = temp;
