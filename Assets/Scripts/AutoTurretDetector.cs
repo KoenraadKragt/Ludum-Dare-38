@@ -17,9 +17,9 @@ public class AutoTurretDetector : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == target)
+        if (collision.gameObject.tag == "Enemy")
         {
-            BroadcastMessage("ClearTarget");
+            BroadcastMessage("ClearTarget", target);
         }
-    }
+    }    
 }
