@@ -3,34 +3,46 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public EnemyStats[] easyEnemy, hardEnemy;
+    public EnemyStats[] enemyList;
+    public EnemyStats[] currentEnemyList;
     public float spawnCooldown;
     int difficulty;
+    int wave;
 
-	public void SpawnWave(int difficultyValue)
+	public void SpawnWave(int difficultyValue, int wave)
     {
+        this.wave = wave;
+        SetCurrentEnemies();
         difficulty = difficultyValue;
         StartCoroutine(SpawnCooldown(2));
+    }
+
+    public void SetCurrentEnemies()
+    {
+        EnemyStats[] temp = new EnemyStats[0];
+        for(int i = 0; i < enemyList.Length; i++)
+        {
+            if(enemyList[i].minimumWave <= wave && enemyList[i].maximumWave >= wave)
+            {
+                EnemyStats[] temp2 = new EnemyStats[temp.Length + 1];
+                temp2[temp2.Length-1] = enemyList[i];
+                for(int j = 0; j < temp.Length; j++)
+                {
+                    temp2[j] = temp[j];
+                }
+                temp = temp2;
+                Debug.Log("ADDED");
+            }
+        }
+        currentEnemyList = temp;
     }
 
     public void SpawnSelect()
     {
         EnemyStats enemy;
-        if (difficulty > 10)
-        {
-            if (Random.Range(0, 10) < 3)
-            {
-                enemy = easyEnemy[Random.Range(0, easyEnemy.Length)];
-            }
-            else
-            {
-                enemy = hardEnemy[Random.Range(0, hardEnemy.Length)];
-            }
-        }
-        else
-        {
-            enemy = easyEnemy[Random.Range(0, easyEnemy.Length)];
-        }
+
+
+        enemy = currentEnemyList[Random.Range(0, currentEnemyList.Length)];
 
         Spawn(enemy);
 
