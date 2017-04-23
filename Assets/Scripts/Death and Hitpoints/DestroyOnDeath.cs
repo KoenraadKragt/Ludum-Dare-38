@@ -16,7 +16,7 @@ public class DestroyOnDeath : MonoBehaviour {
     {
         GetComponent<Collider2D>().enabled = false;
         dying = true;
-        AudioManager.instance.PlayEnemyDeath();
+        AudioManager.instance.playSound(Sounds.EnemyDeath);
         //StartCoroutine(Destruction());
         Destroy(this.gameObject, deathTime);
     }

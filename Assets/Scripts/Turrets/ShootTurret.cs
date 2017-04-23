@@ -28,7 +28,7 @@ public class ShootTurret : MonoBehaviour {
         {
             nextFire = myTime + fireDelta;
             PoolManager.instance.ReuseObject(projectile, transform.position + transform.forward * spawnOffset, transform.rotation);
-            AudioManager.instance.PlayShoot();
+            AudioManager.instance.playSound(Sounds.TurretShoot);
 
             // create code here that animates the newProjectile
             if(anim != null)

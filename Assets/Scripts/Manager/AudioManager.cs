@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Sounds
+{
+    EnemyDeath,
+    TurretShoot,
+    TurretPlace
+}
+
 public class AudioManager : MonoBehaviour {
 
     #region SINGLETON
@@ -20,30 +27,24 @@ public class AudioManager : MonoBehaviour {
     }
     #endregion
 
-    public GameObject enemyObject;
-    private AudioSource enemySource;
-
-    public GameObject shootObject;
-    private AudioSource shootSource;
+    public AudioClip[] clips;
+    private List<AudioSource> sources = new List<AudioSource>();
 
     void Start()
     {
-        enemySource = enemyObject.GetComponent<AudioSource>();
-        shootSource = shootObject.GetComponent<AudioSource>();
-    }
+        for (int i = 0; i < clips.Length; i++)
+        {
+            AudioSource src = gameObject.AddComponent<AudioSource>() as AudioSource;
+            src.clip = clips[i];
+            sources.Add(src);
+        }
 
-    public void PlayEnemyDeath()
-    {
-        playSound(enemySource);
+        sources[(int)Sounds.TurretShoot].volume = 0.3f;
     }
-    public void PlayShoot()
+    
+    public void playSound(Sounds sound)
     {
-        playSound(shootSource);
-    }
-
-    private void playSound(AudioSource source)
-    {
-        source.Stop();
-        source.Play();
+        sources[(int)sound].Stop();
+        sources[(int)sound].Play();
     }
 }

@@ -74,6 +74,7 @@ public class SpawnTurret : MonoBehaviour {
         turret.transform.position = transform.position + direction * planetRadius;
 
         turret.transform.forward = direction;
+        AudioManager.instance.playSound(Sounds.TurretPlace);
     }
 
     public void BuyTurret(int type)
