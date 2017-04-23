@@ -36,6 +36,7 @@ public class SpawnTurret : MonoBehaviour {
         crosshair = GameObject.FindGameObjectWithTag("CrossHair");
         planetRadius = GetComponent<CircleCollider2D>().radius * transform.localScale.x;
 
+        spawningGraphics = GameObject.Instantiate(spawningGraphics);
         spawningGraphics.SetActive(false);
     }
 	
