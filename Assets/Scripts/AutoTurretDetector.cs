@@ -19,6 +19,7 @@ public class AutoTurretDetector : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            target = collision.gameObject;
             BroadcastMessage("ClearTarget", target);
         }
     }    

@@ -12,18 +12,18 @@ public class ShootAutoTurret : MonoBehaviour {
     private GameObject newProjectile;
     private float myTime = 0.0F;
 
-    private AimTurret aim;
+    private AutoTurretAim2000 aim;
 
     void Start()
     {
-        aim = gameObject.GetComponent<AimTurret>();
+        aim = gameObject.GetComponent<AutoTurretAim2000>();
     }
 
     void Update()
     {
         myTime = myTime + Time.deltaTime;
 
-        if (myTime > nextFire && this.gameObject.GetComponent<AutoTurretAim>().HasTarget())
+        if (myTime > nextFire && aim.HasTarget())
         {
             nextFire = myTime + fireDelta;
             PoolManager.instance.ReuseObject(projectile, transform.position + transform.forward * spawnOffset, transform.rotation);
