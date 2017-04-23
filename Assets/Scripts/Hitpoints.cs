@@ -17,7 +17,6 @@ public class Hitpoints : MonoBehaviour {
         if (hitpoints <= 0)
         {
             this.gameObject.SendMessage("Death");
-            Destroy(this.gameObject);
         }
     }
 }
