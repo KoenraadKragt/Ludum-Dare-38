@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class ResetRotation : MonoBehaviour {
 
+    private GameObject crosshair;
+
 	// Use this for initialization
 	void Start () {
-        this.gameObject.transform.rotation = new Quaternion(0,0,0,0);
+        crosshair = GameObject.FindGameObjectWithTag("CrossHair");
+        Vector3 direction = crosshair.transform.position - transform.position;
+        //Quaternion targetRotation = Quaternion.LookRotation();
+        //this.gameObject.transform.rotation = targetRotation;
+        transform.up = direction.normalized;
 	}
 }
