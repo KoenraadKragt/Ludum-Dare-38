@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlanetGenerator : MonoBehaviour 
 {
+    public bool generatePlanetOnStart = true;
+
     public Renderer planetMaterial;
 
     public float vertexStrengthMin = 5;
     public float vertexStrengthMax = 25;
 
-    public float vertexIntensetyMin = .3f;
-    public float vertexIntensetyMax = .45f;
+    public float vertexIntensetyMin = .39f;
+    public float vertexIntensetyMax = .42f;
 
     public float vertexMinHeightMin = 0f;
     public float vertexMinHeightMax = .5f;
@@ -26,6 +28,8 @@ public class PlanetGenerator : MonoBehaviour
     void Start()
     {
         planetMaterial = GetComponent<Renderer>();
+        if(generatePlanetOnStart)
+            GeneratePlanet();
     }
 
     public void GeneratePlanet()
@@ -40,11 +44,11 @@ public class PlanetGenerator : MonoBehaviour
         float vertexScale = Random.Range(0f, 10f);
         vertexSeed = Random.Range(-10000f, 10000f);
 
-        planetMaterial.material.SetFloat("_SSSVertex_aStrength", vertexStrength);
-        planetMaterial.material.SetFloat("_SSSVertex_aIntensety", vertexIntensety);
-        planetMaterial.material.SetFloat("_SSSVertex_aMin_Height", vertexMinHeight);
-        planetMaterial.material.SetFloat("_SSSVertex_aMax_Height", vertexMaxHeight);
-        planetMaterial.material.SetFloat("_SSSVertex_aScale", vertexScale);        
-        planetMaterial.material.SetFloat("_SSSVertex_aSeed", vertexSeed);
+        planetMaterial.sharedMaterial.SetFloat("_SSSVertex_aStrength", vertexStrength);
+        planetMaterial.sharedMaterial.SetFloat("_SSSVertex_aIntensety", vertexIntensety);
+        planetMaterial.sharedMaterial.SetFloat("_SSSVertex_aMin_Height", vertexMinHeight);
+        planetMaterial.sharedMaterial.SetFloat("_SSSVertex_aMax_Height", vertexMaxHeight);
+        planetMaterial.sharedMaterial.SetFloat("_SSSVertex_aScale", vertexScale);        
+        planetMaterial.sharedMaterial.SetFloat("_SSSVertex_aSeed", vertexSeed);
     }
 }
