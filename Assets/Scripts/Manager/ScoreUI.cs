@@ -7,12 +7,12 @@ public class ScoreUI : MonoBehaviour {
 
     public void Start()
     {
-        this.gameObject.GetComponent<Text>().text = "Score: 0";
+        this.gameObject.GetComponent<Text>().text = "0000000";
     }
 
     public void SetScore(int score)
     {
-        this.gameObject.GetComponent<Text>().text = "Score: " + score;
+        this.gameObject.GetComponent<Text>().text = score.ToString("D7");
     }
 	
 }
