@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Apocalypse : MonoBehaviour {
 
@@ -15,12 +16,13 @@ public class Apocalypse : MonoBehaviour {
             
         }
         GetComponent<CircleCollider2D>().enabled = false;
-        
+        StartCoroutine(EndGame());
     }
 
     IEnumerator EndGame()
     {
         yield return new WaitForSecondsRealtime(endTime);
         // TODO: Back To Menu
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     } 
 }
