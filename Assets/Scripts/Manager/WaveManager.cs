@@ -19,7 +19,7 @@ public class WaveManager : MonoBehaviour {
             isSpawning = true;
             if(this.gameObject.GetComponent<ScoreManager>() && this.gameObject.GetComponent<ResourceManager>())
             {
-                this.gameObject.GetComponent<ScoreManager>().IncreaseScore(this.gameObject.GetComponent<ResourceManager>().GetScrap());
+                this.gameObject.GetComponent<ScoreManager>().IncreaseScore(this.gameObject.GetComponent<ResourceManager>().GetScrap() * wave);
             }
             StartCoroutine(NextWave(5));
         }
