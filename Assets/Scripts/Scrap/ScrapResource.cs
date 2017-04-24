@@ -12,6 +12,7 @@ public class ScrapResource : PoolObject
 
     public void Expend()
     {
+        AudioManager.instance.playSound(Sounds.ScrapSpending);
         Destroy();
     }
 }

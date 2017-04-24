@@ -7,7 +7,8 @@ public enum Sounds
     EnemyDeath,
     TurretShoot,
     TurretPlace,
-    PlanetDamage
+    PlanetDamage,
+    ScrapSpending
 }
 
 public class AudioManager : MonoBehaviour {
