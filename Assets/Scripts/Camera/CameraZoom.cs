@@ -25,7 +25,7 @@ public class CameraZoom : MonoBehaviour {
     public float incrementPerWave = 0.2f;
     public float zoomRate = 1;
 
-    private float targetSize;
+    private float targetSize = 5;
 
     public void waveBasedZoom(int waveNum)
     {

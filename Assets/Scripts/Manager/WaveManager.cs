@@ -8,10 +8,11 @@ public class WaveManager : MonoBehaviour {
     int enemyCount = 0;
     int difficulty = 0;
     int wave = 0;
+    private bool startWave = false;
 	
 	// Update is called once per frame
 	void Update () {
-	    if(!isSpawning && enemyCount <= 0)
+	    if(!isSpawning && enemyCount <= 0 && startWave)
         {
             wave += 1;
             difficulty += Mathf.FloorToInt((wave + 1)/2);
@@ -23,6 +24,11 @@ public class WaveManager : MonoBehaviour {
             StartCoroutine(NextWave(5));
         }
 	}
+
+    public void StartWave()
+    {
+        startWave = true;
+    }
 
     public void SpawnDone()
     {
