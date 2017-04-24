@@ -6,6 +6,9 @@ public class OnDestroyEnemy : MonoBehaviour {
 
     void OnDestroy()
     {
-        GameObject.FindGameObjectWithTag("Manager").SendMessage("ReduceEnemyCount", null, SendMessageOptions.DontRequireReceiver);
+        if (GameObject.FindGameObjectWithTag("Manager"))
+        {
+            GameObject.FindGameObjectWithTag("Manager").SendMessage("ReduceEnemyCount", null, SendMessageOptions.DontRequireReceiver);
+        }
     }
 }
