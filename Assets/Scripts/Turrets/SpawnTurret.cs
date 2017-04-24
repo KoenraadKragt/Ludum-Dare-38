@@ -7,7 +7,7 @@ public enum Turrets
     BasicTurret,
     AutoTurret,
     RapidTurret,
-    LauncherTurret
+    Launcher
 }
 
 [System.Serializable]
