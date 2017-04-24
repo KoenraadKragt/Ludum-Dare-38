@@ -58,6 +58,18 @@ ModelImporter:
     100100: Prism006
     100102: Prism007
     100104: Prism008
+    100106: Barrel
+    100108: Barrel 1
+    100110: Base
+    100112: Base 1
+    100114: Bullet
+    100116: Pivot
+    100118: Pivot 1
+    100120: Rocket_01
+    100122: RotationHead
+    100124: RotationHead 1
+    100126: Turret_04
+    100128: Turret_05
     400000: Box004
     400002: Box005
     400004: Box006
@@ -111,6 +123,18 @@ ModelImporter:
     400100: Prism006
     400102: Prism007
     400104: Prism008
+    400106: Barrel
+    400108: Barrel 1
+    400110: Base
+    400112: Base 1
+    400114: Bullet
+    400116: Pivot
+    400118: Pivot 1
+    400120: Rocket_01
+    400122: RotationHead
+    400124: RotationHead 1
+    400126: Turret_04
+    400128: Turret_05
     2300000: Box004
     2300002: Box005
     2300004: Box006
@@ -163,6 +187,14 @@ ModelImporter:
     2300098: Prism006
     2300100: Prism007
     2300102: Prism008
+    2300104: Barrel
+    2300106: Barrel 1
+    2300108: Base
+    2300110: Base 1
+    2300112: Bullet
+    2300114: Rocket_01
+    2300116: RotationHead
+    2300118: RotationHead 1
     3300000: Box004
     3300002: Box005
     3300004: Box006
@@ -215,6 +247,14 @@ ModelImporter:
     3300098: Prism006
     3300100: Prism007
     3300102: Prism008
+    3300104: Barrel
+    3300106: Barrel 1
+    3300108: Base
+    3300110: Base 1
+    3300112: Bullet
+    3300114: Rocket_01
+    3300116: RotationHead
+    3300118: RotationHead 1
     4300000: Cylinder001
     4300002: Prism002
     4300004: Cylinder002
@@ -267,6 +307,14 @@ ModelImporter:
     4300098: Box035
     4300100: Box036
     4300102: Cylinder017
+    4300104: Base
+    4300106: RotationHead
+    4300108: Barrel
+    4300110: Base
+    4300112: RotationHead
+    4300114: Barrel
+    4300116: Rocket_01
+    4300118: Bullet
     9500000: //RootNode
   materials:
     importMaterials: 0
