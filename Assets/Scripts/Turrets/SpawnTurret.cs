@@ -5,7 +5,9 @@ using UnityEngine;
 public enum Turrets
 {
     BasicTurret,
-    AutoTurret
+    AutoTurret,
+    RapidTurret,
+    LauncherTurret
 }
 
 [System.Serializable]

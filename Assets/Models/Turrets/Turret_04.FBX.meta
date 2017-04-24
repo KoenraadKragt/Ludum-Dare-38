@@ -1,71 +1,29 @@
 fileFormatVersion: 2
-guid: fbccf832119f8f44eafc36887db86eb9
-timeCreated: 1493028509
+guid: 0bb3594e5045d2d4297191345d8e74b8
+timeCreated: 1493039936
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Bone004
-    100002: Bone005
-    100004: Bone006
-    100006: Bone007
-    100008: Bone008
-    100010: Bone009
-    100012: Bone010
-    100014: Bone011
-    100016: Bone012
-    100018: Bone013
-    100020: Bone014
-    100022: Bone015
-    100024: Bone016
-    100026: Bone017
-    100028: Bone018
-    100030: Bone019
-    100032: Bone020
-    100034: Bone021
-    100036: Bone022
-    100038: Bone023
-    100040: Bone024
-    100042: Bone025
-    100044: Bone026
-    100046: Bone027
-    100048: Bone028
-    100050: Bone029
-    100052: //RootNode
-    100054: Brac
-    100056: Dummy001
-    400000: Bone004
-    400002: Bone005
-    400004: Bone006
-    400006: Bone007
-    400008: Bone008
-    400010: Bone009
-    400012: Bone010
-    400014: Bone011
-    400016: Bone012
-    400018: Bone013
-    400020: Bone014
-    400022: Bone015
-    400024: Bone016
-    400026: Bone017
-    400028: Bone018
-    400030: Bone019
-    400032: Bone020
-    400034: Bone021
-    400036: Bone022
-    400038: Bone023
-    400040: Bone024
-    400042: Bone025
-    400044: Bone026
-    400046: Bone027
-    400048: Bone028
-    400050: Bone029
-    400052: //RootNode
-    400054: Brac
-    400056: Dummy001
-    4300000: Brac
-    9500000: //RootNode
-    13700000: Brac
+    100000: Barrel
+    100002: Base
+    100004: Pivot
+    100006: RotationHead
+    100008: //RootNode
+    400000: Barrel
+    400002: Base
+    400004: Pivot
+    400006: RotationHead
+    400008: //RootNode
+    2300000: Barrel
+    2300002: Base
+    2300004: RotationHead
+    3300000: Barrel
+    3300002: Base
+    3300004: RotationHead
+    4300000: Base
+    4300002: RotationHead
+    4300004: Barrel
   materials:
     importMaterials: 0
     materialName: 0
@@ -92,7 +50,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 2.5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -111,7 +69,7 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -130,7 +88,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
