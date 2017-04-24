@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public GameObject projectile;
+    public GameObject rapidProjectile;
+    public GameObject rocket;
     public GameObject scrap;
 
     public GameObject pixel;
@@ -12,6 +14,8 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
         PoolManager.instance.CreatePool(projectile, 1024);
+        PoolManager.instance.CreatePool(rapidProjectile, 1024);
+        PoolManager.instance.CreatePool(rocket, 128);
         PoolManager.instance.CreatePool(scrap, 1024);
     }
 
