@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScrapResource : PoolObject
 {
+    public GameObject effect;
     public override void OnObjectReuse()
     {
         ResourceManager.instance.addScrap(1);
@@ -12,6 +13,7 @@ public class ScrapResource : PoolObject
 
     public void Expend()
     {
+        GameObject.Instantiate(effect, transform.position, transform.rotation);
         AudioManager.instance.playSound(Sounds.ScrapSpending);
         Destroy();
     }
