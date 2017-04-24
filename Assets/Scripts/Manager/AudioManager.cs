@@ -28,12 +28,14 @@ public class AudioManager : MonoBehaviour {
         }
     }
     #endregion
-
+    
     public AudioClip[] clips;
     private List<AudioSource> sources = new List<AudioSource>();
+    private AudioSource bgMusic;
 
     void Start()
     {
+        bgMusic = GetComponent<AudioSource>();
         for (int i = 0; i < clips.Length; i++)
         {
             AudioSource src = gameObject.AddComponent<AudioSource>() as AudioSource;
@@ -49,5 +51,11 @@ public class AudioManager : MonoBehaviour {
     {
         sources[(int)sound].Stop();
         sources[(int)sound].Play();
+    }
+
+    public void StartGame()
+    {
+        bgMusic.Stop();
+        bgMusic.Play();
     }
 }

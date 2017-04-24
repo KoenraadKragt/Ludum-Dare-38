@@ -25,7 +25,7 @@ public class WaveManager : MonoBehaviour {
         }
 	}
 
-    public void StartWave()
+    public void StartGame()
     {
         startWave = true;
     }
