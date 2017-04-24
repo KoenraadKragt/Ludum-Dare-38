@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 
     public GameObject pixel;
     private bool pixelMode = false;
+    public GameObject credits;
+    private bool creditsMode = false;
 
 	void Start () {
         PoolManager.instance.CreatePool(projectile, 1024);
@@ -28,5 +30,11 @@ public class GameManager : MonoBehaviour {
     {
         pixelMode = !pixelMode;
         pixel.SetActive(pixelMode);
+    }
+
+    public void ToggleCredits()
+    {
+        creditsMode = !creditsMode;
+        credits.SetActive(creditsMode);
     }
 }
